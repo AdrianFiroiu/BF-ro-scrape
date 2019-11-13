@@ -18,17 +18,33 @@ const cheerio = require('cheerio');
 // });
 
 //eMAG
-request('https://www.emag.ro/procesoare/brand/amd/filter/familie-procesor-f2666,amd-ryzen-5-v24753/vendor/emag/c?ref=lst_leftbar_6427_1', (error, response, html) => {
-   if (!error && response.statusCode == 200) {
-       const $ = cheerio.load(html);
+// request('https://www.emag.ro/procesoare/brand/amd/filter/familie-procesor-f2666,amd-ryzen-5-v24753/vendor/emag/c?ref=lst_leftbar_6427_1', (error, response, html) => {
+//    if (!error && response.statusCode == 200) {
+//        const $ = cheerio.load(html);
+//
+//        console.log('-------eMAG - AMD Ryzen 5 3rd Gen-------');
+//        $('.card-item').each((i, el) => {
+//            const prodTitle = $(el).find('.product-title-zone a').text().replace(/\s\s+/g, '').replace('Procesor', '');
+//            const prodPrice = $(el).find('.product-new-price').text();
+//
+//            console.log(prodTitle, '-', prodPrice);
+//        });
+//        console.log('----------------------------------------');
+//    }
+// });
 
-       console.log('-------eMAG - AMD Ryzen 5 3rd Gen-------');
-       $('.card-item').each((i, el) => {
-           const prodTitle = $(el).find('.product-title-zone a').text().replace(/\s\s+/g, '').replace('Procesor', '');
-           const prodPrice = $(el).find('.product-new-price').text();
+//CEL
+request('https://www.cel.ro/procesoare/amd/serie-i953/ryzen-5/5a-1', (error, response, html) => {
+    if (!error && response.statusCode == 200) {
+        const $ = cheerio.load(html);
 
-           console.log(prodTitle, '-', prodPrice);
-       });
-       console.log('----------------------------------------');
-   }
+        console.log('-------CEL - AMD Ryzen 5 3rd Gen-------');
+        $('.productListingWrapper').each((i, el) => {
+            const prodTitle = $(el).find('.productTitle a').text();
+            const prodPrice = $(el).find('.pret_n').text();
+
+            console.log(prodTitle, '-', prodPrice);
+        });
+        console.log('----------------------------------------');
+    }
 });
