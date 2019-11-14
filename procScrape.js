@@ -38,13 +38,31 @@ request('https://www.cel.ro/procesoare/amd/serie-i953/ryzen-5/5a-1', (error, res
     if (!error && response.statusCode == 200) {
         const $ = cheerio.load(html);
 
-        console.log('-------CEL - AMD Ryzen 5 3rd Gen-------');
-        $('.productListingWrapper').each((i, el) => {
-            const prodTitle = $(el).find('.productTitle a').text();
-            const prodPrice = $(el).find('.pret_n').text();
-
-            console.log(prodTitle, '-', prodPrice);
-        });
-        console.log('----------------------------------------');
+        // console.log('-------CEL - AMD Ryzen 5 3rd Gen-------');
+        // $('.productListingWrapper').each((i, el) => {
+        //     const prodTitle = $(el).find('.productTitle a').text();
+        //     const prodPrice = $(el).find('.pret_n').text();
+        //
+        //     console.log(prodTitle, '-', prodPrice);
+        // });
+        // console.log('----------------------------------------');
+    } else {
+        console.log('Error: ', error);
     }
 });
+
+// var url = 'https://www.cel.ro';
+// request.get({
+//     url: url,
+//     json: true,
+//     headers: {'User-Agent': 'request'}
+// }, (err, res, data) => {
+//     if (err) {
+//         console.log('Error:', err);
+//     } else if (res.statusCode !== 200) {
+//         console.log('Status:', res.statusCode);
+//     } else {
+//         // data is already parsed as JSON:
+//         console.log(data.html_url);
+//     }
+// });
